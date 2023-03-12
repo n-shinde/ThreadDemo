@@ -21,10 +21,17 @@ public class Player implements Runnable {
             Clip clip = (Clip) AudioSystem.getLine(info);
             clip.open(audioStream);
             clip.start();
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException | InterruptedException e) {
+            try {
+                Thread.sleep(clip.getMicrosecondLength() / 1000);
+            } catch (InterruptedException e) {
+                clip.stop();
+            }
+            clip.stop();
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
 
