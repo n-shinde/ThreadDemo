@@ -6,6 +6,7 @@ public class Main {
         try {
             Thread.sleep(1000L * seconds);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -14,6 +15,7 @@ public class Main {
         try {
             thread.interrupt();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
